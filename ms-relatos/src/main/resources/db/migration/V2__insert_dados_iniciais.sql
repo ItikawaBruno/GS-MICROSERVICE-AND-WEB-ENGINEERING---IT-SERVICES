@@ -1,0 +1,5 @@
+INSERT INTO relatos (quadra_id, nome_usuario, descricao, foto_url, data_hora, status) VALUES (1, 'Bruno Itikawa', 'Agua subindo na calcada em frente ao hospital', 'https://alaganao.com.br/fotos/relato1.jpg', NOW(), 'PENDENTE');
+INSERT INTO relatos (quadra_id, nome_usuario, descricao, foto_url, data_hora, status) VALUES (2, 'Maria Souza', 'Bueiro entupido alagando a faixa da direita', 'https://alaganao.com.br/fotos/relato2.jpg', NOW(), 'PENDENTE');
+INSERT INTO relatos (quadra_id, nome_usuario, descricao, foto_url, data_hora, status) VALUES (3, 'Carlos Pereira', 'Transito parado por causa do alagamento no cruzamento', 'https://alaganao.com.br/fotos/relato3.jpg', NOW(), 'PENDENTE');
+INSERT INTO relatos (quadra_id, nome_usuario, descricao, foto_url, data_hora, status) VALUES (4, 'Ana Lima', 'Poca grande na esquina atrapalhando os pedestres', 'https://alaganao.com.br/fotos/relato4.jpg', NOW(), 'PENDENTE');
+INSERT INTO relatos (quadra_id, nome_usuario, descricao, foto_url, data_hora, status) VALUES (5, 'Joao Alves', 'Chuva forte comecando a acumular agua na via', 'https://alaganao.com.br/fotos/relato5.jpg', NOW(), 'PENDENTE');

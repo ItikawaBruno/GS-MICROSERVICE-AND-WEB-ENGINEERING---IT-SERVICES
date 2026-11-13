@@ -1,0 +1,5 @@
+INSERT INTO quadras (logradouro, bairro, latitude, longitude, nota_risco, nivel_risco, status_alagamento, data_atualizacao) VALUES ('Avenida Doutor Arnaldo', 'Sumare', -23.5553, -46.6694, 85, 'ALTO', 'NORMAL', NOW());
+INSERT INTO quadras (logradouro, bairro, latitude, longitude, nota_risco, nivel_risco, status_alagamento, data_atualizacao) VALUES ('Avenida Nove de Julho', 'Bela Vista', -23.5614, -46.6534, 72, 'ALTO', 'NORMAL', NOW());
+INSERT INTO quadras (logradouro, bairro, latitude, longitude, nota_risco, nivel_risco, status_alagamento, data_atualizacao) VALUES ('Rua da Consolacao', 'Consolacao', -23.5531, -46.6619, 55, 'MEDIO', 'NORMAL', NOW());
+INSERT INTO quadras (logradouro, bairro, latitude, longitude, nota_risco, nivel_risco, status_alagamento, data_atualizacao) VALUES ('Avenida Paulista', 'Bela Vista', -23.5614, -46.6558, 40, 'MEDIO', 'NORMAL', NOW());
+INSERT INTO quadras (logradouro, bairro, latitude, longitude, nota_risco, nivel_risco, status_alagamento, data_atualizacao) VALUES ('Rua Oscar Freire', 'Pinheiros', -23.5614, -46.6827, 25, 'BAIXO', 'NORMAL', NOW());
