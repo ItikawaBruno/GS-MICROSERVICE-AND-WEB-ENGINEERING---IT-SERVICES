@@ -23,7 +23,6 @@ import java.util.List;
 @Service
 public class RelatoService {
 
-    // a partir de 3 relatos em 15 minutos a quadra é considerada alagada
     private static final int LIMITE_RELATOS = 3;
     private static final int JANELA_MINUTOS = 15;
     private static final String STATUS_ALAGADO = "ALAGADO";
@@ -61,7 +60,6 @@ public class RelatoService {
 
     @Transactional
     public RelatoResponse criar(RelatoRequest request) {
-        // comunicação síncrona: a quadra precisa existir no ms-quadras
         QuadraResponse quadra = consultarQuadra(request.getQuadraId());
 
         Relato relato = new Relato();
@@ -96,7 +94,6 @@ public class RelatoService {
         }
     }
 
-    // ---------- regras de negócio / apoio ----------
 
     private Relato buscarEntidade(Long id) {
         return relatoRepository.findById(id)
@@ -116,8 +113,6 @@ public class RelatoService {
                 || QuadraClientFallback.STATUS_INDISPONIVEL.equals(quadra.getStatusAlagamento());
     }
 
-    // Conta os relatos da quadra na janela de 15 minutos. Atingido o limite, avisa o
-    // ms-quadras (PATCH status=ALAGADO) e confirma os relatos pendentes da quadra.
     private void avaliarAlagamento(Long quadraId, QuadraResponse quadra) {
         long relatosRecentes = relatoRepository.countByQuadraIdAndDataHoraAfter(
                 quadraId, LocalDateTime.now().minusMinutes(JANELA_MINUTOS));

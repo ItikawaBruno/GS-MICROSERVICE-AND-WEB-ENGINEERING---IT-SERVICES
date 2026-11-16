@@ -82,7 +82,6 @@ public class QuadraService {
                 .orElseThrow(() -> new ResourceNotFoundException("Quadra não encontrada para o id " + id));
     }
 
-    // 0-39 BAIXO | 40-69 MEDIO | 70-100 ALTO
     private NivelRisco calcularNivelRisco(Integer notaRisco) {
         if (notaRisco < 40) {
             return NivelRisco.BAIXO;
