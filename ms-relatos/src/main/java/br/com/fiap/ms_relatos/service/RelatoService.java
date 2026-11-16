@@ -11,8 +11,6 @@ import br.com.fiap.ms_relatos.entity.StatusRelato;
 import br.com.fiap.ms_relatos.exceptions.DatabaseException;
 import br.com.fiap.ms_relatos.exceptions.ResourceNotFoundException;
 import br.com.fiap.ms_relatos.repository.RelatoRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,8 +24,6 @@ public class RelatoService {
     private static final int LIMITE_RELATOS = 3;
     private static final int JANELA_MINUTOS = 15;
     private static final String STATUS_ALAGADO = "ALAGADO";
-
-    private static final Logger log = LoggerFactory.getLogger(RelatoService.class);
 
     private final RelatoRepository relatoRepository;
     private final QuadraClient quadraClient;
@@ -94,7 +90,6 @@ public class RelatoService {
         }
     }
 
-
     private Relato buscarEntidade(Long id) {
         return relatoRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Relato não encontrado para o id " + id));
@@ -122,15 +117,12 @@ public class RelatoService {
         }
 
         if (quadrasIndisponivel(quadra)) {
-            log.warn("Quadra {} atingiu {} relatos, mas o ms-quadras está indisponível: relatos seguem PENDENTE",
-                    quadraId, relatosRecentes);
             return;
         }
 
         QuadraResponse atualizada = quadraClient.atualizarStatus(quadraId, new StatusRequest(STATUS_ALAGADO));
 
         if (quadrasIndisponivel(atualizada)) {
-            log.warn("Falha ao atualizar o status da quadra {}: relatos seguem PENDENTE", quadraId);
             return;
         }
 

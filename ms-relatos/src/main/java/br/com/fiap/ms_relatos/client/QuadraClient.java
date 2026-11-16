@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import org.springframework.web.bind.annotation.GetMapping;
 
-// sem URL fixa: o nome é resolvido pelo Eureka
+
 @FeignClient(name = "ms-quadras", fallbackFactory = QuadraClientFallbackFactory.class)
 public interface QuadraClient {
 

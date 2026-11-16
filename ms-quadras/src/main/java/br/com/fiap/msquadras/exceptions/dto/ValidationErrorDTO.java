@@ -17,9 +17,7 @@ public class ValidationErrorDTO extends CustomErrorDTO {
             super(timestamp, status, error, path);
         }
 
-        // metodo para adicionar erros à List
         public void addError(String fieldName, String message){
-            //remove error de campo duplicado
             errors.removeIf(x -> x.getFieldName().equals(fieldName));
             errors.add(new FieldMessageDTO(fieldName, message));
         }

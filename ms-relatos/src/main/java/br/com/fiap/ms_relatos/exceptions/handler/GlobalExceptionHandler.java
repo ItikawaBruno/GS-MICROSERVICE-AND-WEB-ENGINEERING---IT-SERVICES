@@ -22,7 +22,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<CustomErrorDTO> handleResourceNotFound(ResourceNotFoundException e,
                                                                  HttpServletRequest request) {
-        HttpStatus status = HttpStatus.NOT_FOUND; //404
+        HttpStatus status = HttpStatus.NOT_FOUND;
         CustomErrorDTO err = new CustomErrorDTO(Instant.now(), status.value(),
                 e.getMessage(), request.getRequestURI());
 
@@ -42,23 +42,21 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(status).body(err);
     }
 
-    // 400 - JSON malformado / corpo inválido (não dá para desserializar)
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<CustomErrorDTO> handleHttpMessageNotReadable(HttpMessageNotReadableException e,
                                                                        HttpServletRequest request) {
 
-        HttpStatus status = HttpStatus.BAD_REQUEST; //400
+        HttpStatus status = HttpStatus.BAD_REQUEST;
         CustomErrorDTO err = new CustomErrorDTO(Instant.now(), status.value(),
                 "Requisição inválida (JSON malformado ou corpo não interpretável).",
                 request.getRequestURI());
         return ResponseEntity.status(status).body(err);
     }
 
-    // 400 - tipo inválido em PathVariable/RequestParam (ex.: /produtos/abc quando espera Long)
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     public ResponseEntity<CustomErrorDTO> handleTypeMismatch(MethodArgumentNotValidException e,
                                                              HttpServletRequest request){
-        HttpStatus status = HttpStatus.BAD_REQUEST; //400
+        HttpStatus status = HttpStatus.BAD_REQUEST;
         CustomErrorDTO err = new CustomErrorDTO(Instant.now(), status.value(),
                 "Requisição inválida (parâmetro com tipo/formato incorreto).",
                 request.getRequestURI());
@@ -69,18 +67,17 @@ public class GlobalExceptionHandler {
     public ResponseEntity<CustomErrorDTO> handleDatabase(DatabaseException e,
                                                          HttpServletRequest request){
 
-        HttpStatus status = HttpStatus.CONFLICT; //409
+        HttpStatus status = HttpStatus.CONFLICT;
         CustomErrorDTO err = new CustomErrorDTO(Instant.now(), status.value(),
                 e.getMessage(), request.getRequestURI());
 
         return ResponseEntity.status(status).body(err);
     }
 
-    // 500 - fallback para qualquer erro não tratado
     @ExceptionHandler(Exception.class)
     public ResponseEntity<CustomErrorDTO> handleGenericException(Exception e,
                                                                  HttpServletRequest request) {
-        HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR; // 500
+        HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
         CustomErrorDTO err = new CustomErrorDTO(
                 Instant.now(), status.value(),
                 e.getMessage(),

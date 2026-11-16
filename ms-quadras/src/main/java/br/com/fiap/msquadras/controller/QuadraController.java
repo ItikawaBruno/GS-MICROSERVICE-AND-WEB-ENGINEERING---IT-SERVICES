@@ -58,7 +58,6 @@ public class QuadraController {
         return ResponseEntity.ok(quadraService.atualizar(id, request));
     }
 
-    // chamado pelo ms-relatos quando a quadra atinge o limite de relatos
     @PatchMapping("/{id}/status")
     public ResponseEntity<QuadraResponse> atualizarStatus(@PathVariable Long id,
                                                           @Valid @RequestBody StatusRequest request) {
